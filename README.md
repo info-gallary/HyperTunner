@@ -173,34 +173,6 @@ tuner = CNNHyperTuner(
 
 ---
 
-## Project Structure
-
-```
-cnn_hypertuner/
-├── cnn_hypertuner/
-│   ├── __init__.py
-│   ├── tuner.py              ← Main orchestrator
-│   ├── search_space.py       ← Hyperparameter space definition
-│   ├── trainer.py            ← CNN training + objective function
-│   ├── cli.py                ← CLI entry point
-│   ├── algorithms/
-│   │   ├── base.py           ← Abstract base optimizer
-│   │   ├── genetic_algorithm.py
-│   │   ├── pso.py
-│   │   └── simulated_annealing.py
-│   ├── models/
-│   │   └── cnn_builder.py    ← FlexCNN builder
-│   └── utils/
-│       └── plotting.py       ← Visualization tools
-├── configs/
-│   └── default.yaml
-├── experiments/              ← Auto-created, stores results
-├── run_tuner.py              ← Quick-start script
-├── setup.py
-└── README.md
-```
-
----
 
 ## Output
 
