@@ -1,0 +1,18 @@
+[project]
+name = "cnn-hypertuner"
+version = "1.0.0"
+description = "CNN Hyperparameter Tuning via Soft Computing (GA, PSO, SA)"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "numpy>=1.21.0",
+    "plotly>=5.0.0",
+    "streamlit>=1.20.0",
+    "pyyaml",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

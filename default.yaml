@@ -1,0 +1,60 @@
+# CNN HyperTuner Configuration
+# Use this file to customize your tuning run.
+# Pass with: python run_tuner.py --config configs/default.yaml
+
+experiment:
+  name: "cnn_tune_experiment"
+  output_dir: "./experiments"
+  seed: 42
+  verbose: true
+
+dataset:
+  name: "cifar10"          # "cifar10", "mnist", or "custom"
+  data_root: "./data"
+  n_epochs_per_eval: 5     # Training epochs per config evaluation
+  device: null             # null = auto-detect (cuda > mps > cpu)
+
+# ─── Algorithm Selection ───────────────────────────────────────────────────
+# Choose one: "ga", "pso", "sa"
+algorithm: "pso"
+n_iterations: 30
+
+# ─── Algorithm-Specific Settings ───────────────────────────────────────────
+
+genetic_algorithm:
+  population_size: 20
+  crossover_rate: 0.85
+  mutation_rate: 0.15
+  tournament_size: 3
+  elitism_count: 2
+  blx_alpha: 0.5
+  mutation_sigma: 0.1
+  adaptive_mutation: true
+  stagnation_restart_after: 20
+
+particle_swarm:
+  n_particles: 25
+  w_max: 0.9
+  w_min: 0.4
+  c1: 2.0
+  c2: 2.0
+  v_max_fraction: 0.2
+  topology: "global"        # "global" or "ring"
+  ring_neighbors: 2
+  stagnation_restart_after: 20
+
+simulated_annealing:
+  T0: 1.0
+  T_min: 0.00001
+  alpha: 0.97
+  perturbation: "gaussian"  # "gaussian" or "cauchy"
+  perturbation_scale: 0.1
+  reheat_factor: 2.0
+  stagnation_reheat_after: 30
+
+# ─── Search Space Overrides ────────────────────────────────────────────────
+# Leave empty to use defaults. Override specific params only.
+search_space:
+  # Example overrides:
+  # learning_rate: {type: float, low: 1e-4, high: 1e-2, log_scale: true}
+  # batch_size: {type: categorical, choices: [32, 64, 128]}
